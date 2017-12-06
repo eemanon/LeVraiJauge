@@ -1,4 +1,7 @@
 package etatPassager;
+
+import etatPassager.EtatPassager.Etat;
+
 /**
  * Cette classe représente l'état d'un passager dans un transport.
  * Il y a un état à l'exterieur du transport (dehors) et deux états à 
@@ -6,23 +9,19 @@ package etatPassager;
  *  
  * Les instances de cette classe sont des objets constants.
  **/
-public class EtatPassager implements IEtatPassager{
+public class EtatPassagerChaine implements IEtatPassager{
   /**
    * Définit les trois états possible d'un passager dans un transport.
    */
-  public enum Etat {/** passager assis à l'intérieur */  ASSIS, 
-                    /** passager debout à l'intérieur */ DEBOUT,  
-                    /** passager à l'extérieur */        DEHORS};
-
-  private final Etat monEtat;
+  private final String monEtat;
 
   /**
    * Construit une instance en précisant l'état du passager.
    * 
    * @param e  valeur de l'état.
    */
-  public EtatPassager(Etat e) {
-    monEtat = e;
+  public EtatPassagerChaine(String etat) {
+    this.monEtat = etat;
 
     /* Le constructeur d'une classe permet d'initialiser l'etat de l'instance creee.
      * Son nom correspond toujours au nom de la classe. Il n'y a pas de type de retour.
@@ -36,7 +35,7 @@ public class EtatPassager implements IEtatPassager{
    * @return vrai si instanciation avec DEHORS;
    */
   public boolean estExterieur() {
-    return this.monEtat==Etat.DEHORS;
+    return this.monEtat=="eksterieur";
   }
 
   /**
@@ -45,7 +44,7 @@ public class EtatPassager implements IEtatPassager{
    * @return vrai si instanciation avec ASSIS;
    */
   public boolean estAssis() {
-    return monEtat == Etat.ASSIS;
+    return monEtat == "sureinsiege";
   }
 
   /**
@@ -54,7 +53,7 @@ public class EtatPassager implements IEtatPassager{
    * @return vrai si instanciation avec DEBOUT;
    */
   public boolean estDebout() {
-    return this.monEtat == Etat.DEBOUT;
+    return this.monEtat == "2bous";
   }
 
   /**
@@ -63,7 +62,7 @@ public class EtatPassager implements IEtatPassager{
    * @return vrai si instanciation avec ASSIS ou DEBOUT.
    */
   public boolean estInterieur() {
-    return this.monEtat != Etat.DEHORS;
+    return this.monEtat != "eksterieur";
   }
 
 

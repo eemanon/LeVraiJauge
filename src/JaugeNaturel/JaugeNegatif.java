@@ -1,6 +1,6 @@
 package JaugeNaturel;
 
-public class JaugeNegatif {
+public class JaugeNegatif extends Jauge implements IJauge {
 	  private long valeur;
 	  private final long min;
 	  private final long max;

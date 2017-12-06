@@ -1,6 +1,6 @@
 package JaugeNaturel;
 
-public class JaugeDistance {
+public class JaugeDistance extends Jauge implements IJauge {
 	  private long valeur;
 	  private final long distanceVigi1;
 	  private final long distanceVigi2;
@@ -13,7 +13,7 @@ public class JaugeDistance {
 	   * @param vigieMax valeur maximale de l'intervalle de vigie.
 	   * @param depart   valeur initiale de la jauge.
 	 */  
-	  public JaugeNaturel(float vigieMin, float vigieMax) {
+	  public JaugeDistance(long vigieMin, long vigieMax) {
 	    distanceVigi1 = vigieMin;
 	    distanceVigi2 = vigieMax;
 	    /* Le constructeur d'une classe permet d'initialiser l'etat de l'instance creee.
@@ -98,11 +98,11 @@ public class JaugeDistance {
 
 
 	public long getMax() {
-		return max;
+		return distanceVigi1;
 	}
 
 
 	public long getMin() {
-		return min;
+		return distanceVigi2;
 	}
 }

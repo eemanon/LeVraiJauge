@@ -4,7 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class JaugeNaturelTest {
+public class JaugeNaturelTest implements IJaugeTest{
 	JaugeNaturel jauge, jauge1, jauge2, jauge3, jauge4, jauge5, jaugeBis, jauge6, jauge7, jauge8;
 	
 	@Before
@@ -29,7 +29,11 @@ public class JaugeNaturelTest {
 		jauge3 = null;
 		
 	}
-	
+	@Override
+	public Jauge creerJauge() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	@Test
 	public void testEstRouge() {
 		assert(jauge.estRouge());

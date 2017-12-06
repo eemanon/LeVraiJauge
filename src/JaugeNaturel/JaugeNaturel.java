@@ -18,7 +18,7 @@ package JaugeNaturel;
  * @author georgy
  * @since 2006-2007
  */
-public class JaugeNaturel {
+public class JaugeNaturel extends Jauge{
   private long valeur;
   private final long min;
   private final long max;

@@ -1,6 +1,6 @@
 package JaugeNaturel;
 
-public class JaugeReel {
+public class JaugeReel extends Jauge implements IJauge{
 	  private float valeur;
 	  private final float min;
 	  private final float max;
