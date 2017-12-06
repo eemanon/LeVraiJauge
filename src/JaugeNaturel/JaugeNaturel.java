@@ -18,7 +18,7 @@ package JaugeNaturel;
  * @author georgy
  * @since 2006-2007
  */
-public class JaugeNaturel extends Jauge{
+public class JaugeNaturel extends Jauge implements IJauge{
   private long valeur;
   private final long min;
   private final long max;
@@ -124,5 +124,19 @@ public long getMax() {
 
 public long getMin() {
 	return min;
+}
+
+
+@Override
+public void setMin(long val) {
+	// TODO Auto-generated method stub
+	
+}
+
+
+@Override
+public void setMax() {
+	// TODO Auto-generated method stub
+	
 }
 }
