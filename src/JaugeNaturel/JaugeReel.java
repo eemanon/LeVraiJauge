@@ -1,6 +1,6 @@
 package JaugeNaturel;
 
-public class JaugeReel extends Jauge implements IJauge{
+public class JaugeReel implements IJauge{
 	  private float valeur;
 	  private final float min;
 	  private final float max;
@@ -14,7 +14,7 @@ public class JaugeReel extends Jauge implements IJauge{
 	   * @param depart   valeur initiale de la jauge.
 	 */  
 	  public JaugeReel(float vigieMin, float vigieMax, float depart) {
-	    setValeur(depart);
+	    setVal(new Placeholder(0,depart, 0));
 	    min = vigieMin;
 	    max = vigieMax;
 	    /* Le constructeur d'une classe permet d'initialiser l'etat de l'instance creee.
@@ -30,7 +30,7 @@ public class JaugeReel extends Jauge implements IJauge{
 	   *
 	   */
 	  public boolean estRouge() {
-	    return getValeur() >= getMax();
+	    return getVal().getFlottant() >= getMax().getFlottant();
 	  }
 
 	  /**
@@ -41,7 +41,7 @@ public class JaugeReel extends Jauge implements IJauge{
 	   */
 	  public boolean estVert() {
 	    //return !(estBleu() && estRouge());
-	    return getValeur() > getMin() && getValeur() < getMax();
+	    return getVal().getFlottant() > getMin().getFlottant() && getVal().getFlottant() < getMax().getFlottant();
 	  }
 
 	  /**
@@ -50,7 +50,7 @@ public class JaugeReel extends Jauge implements IJauge{
 	   * @return vrai si niveau <= vigieMin.
 	   */
 	  public boolean estBleu() {
-	    return getValeur() <= getMin();
+	    return getVal().getFlottant() <= getMin().getFlottant();
 	  }
 
 	  /**
@@ -58,7 +58,7 @@ public class JaugeReel extends Jauge implements IJauge{
 	   * L'état peut devenir supérieur à vigieMax.
 	   */
 	  public void incrementer() {
-	    setValeur(getValeur() + 1);
+		  setVal(new Placeholder(0, getVal().getFlottant() + 1, 0));
 	  }
 
 	  /**
@@ -66,7 +66,7 @@ public class JaugeReel extends Jauge implements IJauge{
 	   * L'état peut devenir inférieur à la vigieMin.
 	   */
 	  public void decrementer() {
-		    setValeur(getValeur() - 1);
+		    setVal(new Placeholder(0, getVal().getFlottant() - 1, 0));
 	  }
 
 
@@ -85,25 +85,30 @@ public class JaugeReel extends Jauge implements IJauge{
 	   */
 	  @Override
 	  public String toString() {
-	    return "<" + getValeur() + " [" + getMin() + "," + getMax() + "]>";
+	    return "<" + getVal().getFlottant() + " [" + getMin().getFlottant() + "," + getMax().getFlottant() + "]>";
 	  }
 
-	public float getValeur() {
-		return valeur;
+	@Override
+	public Placeholder getMin() {
+		return new Placeholder(0, this.min, 0);
 	}
 
 
-	public void setValeur(float valeur) {
-		this.valeur = valeur;
+	@Override
+	public Placeholder getMax() {
+		return new Placeholder(0, this.max, 0);
 	}
 
 
-	public float getMax() {
-		return max;
+	@Override
+	public Placeholder getVal() {
+		return new Placeholder(0,this.valeur, 0);
 	}
 
 
-	public float getMin() {
-		return min;
+	@Override
+	public void setVal(Placeholder p) {
+		this.valeur = p.getFlottant();
+		
 	}
 }
