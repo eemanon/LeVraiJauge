@@ -28,6 +28,15 @@ public class EtatPassager implements IEtatPassager{
      * Son nom correspond toujours au nom de la classe. Il n'y a pas de type de retour.
      */
   }
+  
+  //FACTORY
+  public creerEtatPassager(Etat e) {
+	  return new EtatPassager(Etat e);
+  }
+  
+  public creetEtatPassager(String etat) {
+	  return new EtatPassagerChaine(String etat);
+  }
 
 
   /**

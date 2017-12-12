@@ -18,7 +18,7 @@ public class EtatPassagerChaine implements IEtatPassager{
   /**
    * Construit une instance en précisant l'état du passager.
    * 
-   * @param e  valeur de l'état.
+   * @param etat  valeur de l'état.
    */
   public EtatPassagerChaine(String etat) {
     this.monEtat = etat;
@@ -35,7 +35,7 @@ public class EtatPassagerChaine implements IEtatPassager{
    * @return vrai si instanciation avec DEHORS;
    */
   public boolean estExterieur() {
-    return this.monEtat=="eksterieur";
+    return this.monEtat=="exterieur";
   }
 
   /**
@@ -44,7 +44,7 @@ public class EtatPassagerChaine implements IEtatPassager{
    * @return vrai si instanciation avec ASSIS;
    */
   public boolean estAssis() {
-    return monEtat == "sureinsiege";
+    return monEtat == "sur un siege";
   }
 
   /**
@@ -53,7 +53,7 @@ public class EtatPassagerChaine implements IEtatPassager{
    * @return vrai si instanciation avec DEBOUT;
    */
   public boolean estDebout() {
-    return this.monEtat == "2bous";
+    return this.monEtat == "debout";
   }
 
   /**
@@ -62,14 +62,14 @@ public class EtatPassagerChaine implements IEtatPassager{
    * @return vrai si instanciation avec ASSIS ou DEBOUT.
    */
   public boolean estInterieur() {
-    return this.monEtat != "eksterieur";
+    return this.monEtat != "exterieur";
   }
 
 
 
   /**
    * Cette méthode est heritée de la classe {@link java.lang.Object}.
-   * Trés utile pour le débogage, elle permet de fournir une 
+   * Très utile pour le débogage, elle permet de fournir une 
    * chaîne de caractères correspondant à l'état d'un objet.
    * <p> Un code par défaut est définit dans 
    * {@link java.lang.Object#toString() la classe Object} 
