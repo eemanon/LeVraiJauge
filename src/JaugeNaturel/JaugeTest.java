@@ -83,16 +83,17 @@ public class JaugeTest implements IJaugeTest{
 	@Test
 	public void testIncrementer() {
 		//assert(jauge.incrementer().equals(jaugeBis));
-		long valeur_avant = jauge.getValeur();
+		Placeholder valeur_avant = jauge.getVal();
 		jauge.incrementer();
-		assert(jauge.getValeur() == valeur_avant + 1);
+		assert(jauge.getVal().compareTo(valeur_avant) == 1);
+		//fuck those. il me faut un moyen de comparer les valeurs de deux jauges
 	}
 
 	@Test
 	public void testDecrementer() {
-		long valeur_avant = jauge.getValeur();
+		Placeholder valeur_avant = jauge.getVal();
 		jauge.decrementer();
-		assert(jauge.getValeur() == valeur_avant - 1):"Valeur n'a pas été décrementée!!!fuckkkk";
+		assert(jauge.getVal().compareTo(valeur_avant) == -1):"Valeur n'a pas été décrementée!!!fuckkkk";
 	}
 	
 	@Test
@@ -102,7 +103,7 @@ public class JaugeTest implements IJaugeTest{
 	}
 	@Test
 	public void testLimiteVgieMaxInferieurVigieMin() {
-		assert(jauge1.getMin()<jauge1.getMax()):"VgieMax n est pas plus grand que VgieMin!";	
+		assert(jauge.getMin().compareTo(jauge.getMax()) == -1):"VgieMax n est pas plus grand que VgieMin!";	
 	}
 	@Test
 	public void run() {

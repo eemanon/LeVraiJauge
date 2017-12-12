@@ -111,4 +111,10 @@ public class JaugeReel implements IJauge{
 		this.valeur = p.getFlottant();
 		
 	}
+
+
+	@Override
+	public int comparerValeur(Placeholder p) {
+		return Float.compare(p.getFlottant(), this.valeur);
+	}
 }

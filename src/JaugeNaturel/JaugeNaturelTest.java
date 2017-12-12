@@ -4,7 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class JaugeNaturelTest implements IJaugeTest{
+public class JaugeNaturelTest {
 	JaugeNaturel jauge, jauge1, jauge2, jauge3, jauge4, jauge5, jaugeBis, jauge6, jauge7, jauge8;
 	
 	@Before
@@ -28,11 +28,6 @@ public class JaugeNaturelTest implements IJaugeTest{
 		jauge2 = null;
 		jauge3 = null;
 		
-	}
-	@Override
-	public Jauge creerJauge() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 	@Test
 	public void testEstRouge() {
@@ -76,7 +71,7 @@ public class JaugeNaturelTest implements IJaugeTest{
 	}
 	@Test
 	public void testLimiteVgieMaxInferieurVigieMin() {
-		assert(jauge1.getMin()<jauge1.getMax()):"VgieMax n est pas plus grand que VgieMin!";	
+		assert(jauge1.getMin().getTlong()<jauge1.getMax().getTlong()):"VgieMax n est pas plus grand que VgieMin!";	
 	}
 	@Test
 	public void run() {
