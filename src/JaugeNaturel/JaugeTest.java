@@ -6,25 +6,18 @@ import org.junit.Test;
 
 
 public class JaugeTest{
-	public enum TypeJauge {
-		JaugeDistance, 
-		JaugeNaturel,
-        JaugeNegatif,
-        JaugeReel         			
-	};
-	public static IJauge creerJauge(TypeJauge type) {
-		switch (type) {
-		case JaugeDistance:
-			return new JaugeDistance(0, 0);
-		case JaugeNaturel:
-			return new JaugeNaturel(0, 0, 0);
-		case JaugeNegatif:
-			return new JaugeNegatif(0, 0, 0);
-		case JaugeReel:
-			return new JaugeReel(0, 0, 0);
-		}
-		return null;
-				
+
+	public static IJauge creerJauge(int min, int max) {
+		return new JaugeDistance(min, max);
+	}
+	public static IJauge creerJauge(int min, int max, int val) {
+		if (min<0||max<0||val<0)
+			return new JaugeNegatif(min, max, val);
+		else
+			return new JaugeNaturel(min, max, val);
+	}
+	public static IJauge creerJauge(float min,float max,float val) {
+		return new JaugeReel(min, max, val);
 	}
 	
 	
@@ -33,16 +26,16 @@ public class JaugeTest{
 	
 	@Before
 	public void initialiser() throws Exception{
-		jauge = creerJauge(TypeJauge.JaugeNaturel);
-		jauge1 = creerJauge(TypeJauge.JaugeNaturel);
-		jauge2 = creerJauge(TypeJauge.JaugeNaturel);
-		jauge3 = creerJauge(TypeJauge.JaugeNaturel);
-		jauge4 = creerJauge(TypeJauge.JaugeNaturel);
-		jaugeBis = creerJauge(TypeJauge.JaugeNaturel);
-		jauge5 = creerJauge(TypeJauge.JaugeNaturel);
-		jauge6 = creerJauge(TypeJauge.JaugeNaturel);
-		jauge7 = creerJauge(TypeJauge.JaugeNaturel);
-		jauge8 = creerJauge(TypeJauge.JaugeNaturel);
+		jauge = creerJauge(1.0f, 10.0f, 5.0f);
+		jauge1 = creerJauge(1, 10);
+		jauge2 = creerJauge(-1, -10, -5);
+		jauge3 = creerJauge(1, 5, 10);
+		jauge4 = creerJauge(100,100,100);
+		jaugeBis = creerJauge(-100, -200, 100);
+		jauge5 = creerJauge(100, 200, 150);
+		jauge6 = creerJauge(100, 200, 301);
+		jauge7 = creerJauge(0,300,321);
+		jauge8 = creerJauge(300,302, 301);
 	}
 	
 	@After
