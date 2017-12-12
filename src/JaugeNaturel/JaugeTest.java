@@ -4,22 +4,46 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import JaugeNaturel.Jauge.TypeJauge;
+
 public class JaugeTest implements IJaugeTest{
-	Jauge jauge, jauge1, jauge2, jauge3, jauge4, jauge5, jaugeBis, jauge6, jauge7, jauge8;
+	public enum TypeJauge {
+		JaugeDistance, 
+		JaugeNaturel,
+        JaugeNegatif,
+        JaugeReel         			
+	};
+	public static IJauge creerJauge(TypeJauge type) {
+		switch (type) {
+		case JaugeDistance:
+			return new JaugeDistance(0, 0);
+		case JaugeNaturel:
+			return new JaugeNaturel(0, 0, 0);
+		case JaugeNegatif:
+			return new JaugeNegatif(0, 0, 0);
+		case JaugeReel:
+			return new JaugeReel(0, 0, 0);
+		}
+		return null;
+				
+	}
+	
+	
+	
+	IJauge jauge, jauge1, jauge2, jauge3, jauge4, jauge5, jaugeBis, jauge6, jauge7, jauge8;
 	
 	@Before
 	public void initialiser() throws Exception{
-		jauge = Jauge.creerJauge(Jauge.TypeJauge.JaugeNaturel);
-		jauge1 = Jauge.creerJauge(Jauge.TypeJauge.JaugeNaturel);
-		jauge2 = Jauge.creerJauge(Jauge.TypeJauge.JaugeNaturel);
-		jauge3 = Jauge.creerJauge(Jauge.TypeJauge.JaugeNaturel);
-		jauge4 = Jauge.creerJauge(Jauge.TypeJauge.JaugeNaturel);
-		jaugeBis = Jauge.creerJauge(Jauge.TypeJauge.JaugeNaturel);
-		jauge5 = Jauge.creerJauge(Jauge.TypeJauge.JaugeNaturel);
-		jauge6 = Jauge.creerJauge(Jauge.TypeJauge.JaugeNaturel);
-		jauge7 = Jauge.creerJauge(Jauge.TypeJauge.JaugeNaturel);
-		jauge8 = Jauge.creerJauge(Jauge.TypeJauge.JaugeNaturel);
-		jauge.
+		jauge = creerJauge(TypeJauge.JaugeNaturel);
+		jauge1 = creerJauge(TypeJauge.JaugeNaturel);
+		jauge2 = creerJauge(TypeJauge.JaugeNaturel);
+		jauge3 = creerJauge(TypeJauge.JaugeNaturel);
+		jauge4 = creerJauge(TypeJauge.JaugeNaturel);
+		jaugeBis = creerJauge(TypeJauge.JaugeNaturel);
+		jauge5 = creerJauge(TypeJauge.JaugeNaturel);
+		jauge6 = creerJauge(TypeJauge.JaugeNaturel);
+		jauge7 = creerJauge(TypeJauge.JaugeNaturel);
+		jauge8 = creerJauge(TypeJauge.JaugeNaturel);
 	}
 	
 	@After
@@ -35,11 +59,6 @@ public class JaugeTest implements IJaugeTest{
 		jauge8 = null;
 		jaugeBis = null;
 		
-	}
-	@Override
-	public Jauge creerJauge() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 	@Test
 	public void testEstRouge() {

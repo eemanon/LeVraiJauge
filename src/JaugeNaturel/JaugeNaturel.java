@@ -18,7 +18,7 @@ package JaugeNaturel;
  * @author georgy
  * @since 2006-2007
  */
-public class JaugeNaturel extends Jauge implements IJauge{
+public class JaugeNaturel implements IJauge{
   private long valeur;
   private final long min;
   private final long max;
@@ -48,7 +48,7 @@ public class JaugeNaturel extends Jauge implements IJauge{
    *
    */
   public boolean estRouge() {
-    return getValeur() >= getMax();
+    return getVal().getTlong() >= getMax().getTlong();
   }
 
   /**
@@ -59,7 +59,7 @@ public class JaugeNaturel extends Jauge implements IJauge{
    */
   public boolean estVert() {
     //return !(estBleu() && estRouge());
-    return getValeur() > getMin() && getValeur() < getMax();
+    return getVal().getTlong() > getMin().getTlong() && getVal().getTlong() < getMax().getTlong();
   }
 
   /**
@@ -68,7 +68,7 @@ public class JaugeNaturel extends Jauge implements IJauge{
    * @return vrai si niveau <= vigieMin.
    */
   public boolean estBleu() {
-    return getValeur() <= getMin();
+    return getVal().getTlong() <= getMin().getTlong();
   }
 
   /**
@@ -116,27 +116,28 @@ public void setValeur(long valeur) {
 	this.valeur = valeur;
 }
 
-
-public long getMax() {
-	return max;
-}
-
-
-public long getMin() {
-	return min;
+@Override
+public Placeholder getVal() {
+	return new Placeholder(0, 0, this.valeur);
 }
 
 
 @Override
-public void setMin(long val) {
-	// TODO Auto-generated method stub
+public void setVal(Placeholder p) {
+	this.valeur = p.getTlong();
 	
 }
 
 
 @Override
-public void setMax() {
-	// TODO Auto-generated method stub
-	
+public Placeholder getMin() {
+	return new Placeholder(0, 0, this.min);
 }
+
+
+@Override
+public Placeholder getMax() {
+	return new Placeholder(0,0, this.max);
+}
+
 }

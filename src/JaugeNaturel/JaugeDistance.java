@@ -29,7 +29,7 @@ public class JaugeDistance extends Jauge implements IJauge {
 	   *
 	   */
 	  public boolean estRouge() {
-	    return getValeur() >= getMax();
+	    return 0 > distanceVigi2;
 	  }
 
 	  /**
@@ -40,7 +40,7 @@ public class JaugeDistance extends Jauge implements IJauge {
 	   */
 	  public boolean estVert() {
 	    //return !(estBleu() && estRouge());
-	    return getValeur() > getMin() && getValeur() < getMax();
+	    return distanceVigi1>0 && distanceVigi2 > 0;
 	  }
 
 	  /**
@@ -49,7 +49,7 @@ public class JaugeDistance extends Jauge implements IJauge {
 	   * @return vrai si niveau <= vigieMin.
 	   */
 	  public boolean estBleu() {
-	    return getValeur() <= getMin();
+	    return distanceVigi1<0;
 	  }
 
 	  /**
@@ -57,7 +57,7 @@ public class JaugeDistance extends Jauge implements IJauge {
 	   * L'état peut devenir supérieur à vigieMax.
 	   */
 	  public void incrementer() {
-	    setValeur(getValeur() + 1);
+	    valeur =+ 1;
 	  }
 
 	  /**
@@ -65,7 +65,7 @@ public class JaugeDistance extends Jauge implements IJauge {
 	   * L'état peut devenir inférieur à la vigieMin.
 	   */
 	  public void decrementer() {
-		    setValeur(getValeur() - 1);
+		    valeur= - 1;
 	  }
 
 
@@ -82,27 +82,40 @@ public class JaugeDistance extends Jauge implements IJauge {
 	   * Si l'état d'une instance de cette classe est min=-456, max=23,
 	   * valeur=-7, la concaténation donne la chaîne "<-7 [-456,23]>".
 	   */
-	  @Override
 	  public String toString() {
 	    return "<" + getValeur() + " [" + getMin() + "," + getMax() + "]>";
 	  }
 
-	public long getValeur() {
-		return valeur;
+	public Placeholder getValeur() {
+		return new Placeholder(0,0.0f,valeur);
 	}
 
 
-	public void setValeur(long valeur) {
-		this.valeur = valeur;
+	public void setValeur(Placeholder p) {
+		this.valeur = p.getTlong();
 	}
 
 
-	public long getMax() {
-		return distanceVigi1;
+	public Placeholder getMax() {
+		return new Placeholder(0,0,this.distanceVigi1);
 	}
 
 
-	public long getMin() {
-		return distanceVigi2;
+	public Placeholder getMin() {
+		return new Placeholder(0,0,this.distanceVigi2);
+	}
+
+
+	@Override
+	public Placeholder getVal() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public void setVal(Placeholder p) {
+		// TODO Auto-generated method stub
+		
 	}
 }
