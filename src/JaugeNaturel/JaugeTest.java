@@ -4,9 +4,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import JaugeNaturel.Jauge.TypeJauge;
 
-public class JaugeTest implements IJaugeTest{
+public class JaugeTest{
 	public enum TypeJauge {
 		JaugeDistance, 
 		JaugeNaturel,
