@@ -8,7 +8,7 @@ import etatPassager.EtatPassager.Etat;
  * l'intérieur (assis, debout).
  *  
  * Les instances de cette classe sont des objets constants.
- **/
+ */
 public class EtatPassagerChaine implements IEtatPassager{
   /**
    * Définit les trois états possible d'un passager dans un transport.
@@ -21,7 +21,10 @@ public class EtatPassagerChaine implements IEtatPassager{
    * @param etat  valeur de l'état.
    */
   public EtatPassagerChaine(String etat) {
-    this.monEtat = etat;
+	  if(etat=="exterieur" || etat=="sur un siege" ||etat=="debout")
+		  this.monEtat = etat;
+	  else
+		  this.monEtat = "";
 
     /* Le constructeur d'une classe permet d'initialiser l'etat de l'instance creee.
      * Son nom correspond toujours au nom de la classe. Il n'y a pas de type de retour.
