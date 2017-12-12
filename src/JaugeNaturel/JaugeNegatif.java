@@ -1,6 +1,6 @@
 package JaugeNaturel;
 
-public class JaugeNegatif extends Jauge implements IJauge {
+public class JaugeNegatif implements IJauge {
 	  private long valeur;
 	  private final long min;
 	  private final long max;
@@ -14,7 +14,7 @@ public class JaugeNegatif extends Jauge implements IJauge {
 	   * @param depart   valeur initiale de la jauge.
 	 */  
 	  public JaugeNegatif(long vigieMin, long vigieMax, long depart) {
-	    setValeur(depart);
+	    setVal(new Placeholder(0, 0, depart));
 	    min = -vigieMin;
 	    max = -vigieMax;
 	    /* Le constructeur d'une classe permet d'initialiser l'etat de l'instance creee.
@@ -30,7 +30,7 @@ public class JaugeNegatif extends Jauge implements IJauge {
 	   *
 	   */
 	  public boolean estRouge() {
-	    return getValeur() >= getMax();
+	    return getVal().getTlong() >= getMax().getTlong();
 	  }
 
 	  /**
@@ -41,7 +41,7 @@ public class JaugeNegatif extends Jauge implements IJauge {
 	   */
 	  public boolean estVert() {
 	    //return !(estBleu() && estRouge());
-	    return getValeur() > getMin() && getValeur() < getMax();
+	    return getVal().getTlong() > getMin().getTlong() && getVal().getTlong() < getMax().getTlong();
 	  }
 
 	  /**
@@ -50,7 +50,7 @@ public class JaugeNegatif extends Jauge implements IJauge {
 	   * @return vrai si niveau <= vigieMin.
 	   */
 	  public boolean estBleu() {
-	    return getValeur() <= getMin();
+	    return getVal().getTlong() <= getMin().getTlong();
 	  }
 
 	  /**
@@ -58,7 +58,7 @@ public class JaugeNegatif extends Jauge implements IJauge {
 	   * L'état peut devenir supérieur à vigieMax.
 	   */
 	  public void incrementer() {
-	    setValeur(getValeur() + 1);
+	    setVal(new Placeholder(0,0, getVal().getTlong() + 1));
 	  }
 
 	  /**
@@ -66,7 +66,7 @@ public class JaugeNegatif extends Jauge implements IJauge {
 	   * L'état peut devenir inférieur à la vigieMin.
 	   */
 	  public void decrementer() {
-		    setValeur(getValeur() - 1);
+		    setVal(new Placeholder(0,0, getVal().getTlong() - 1));
 	  }
 
 
@@ -84,25 +84,29 @@ public class JaugeNegatif extends Jauge implements IJauge {
 	   * valeur=-7, la concaténation donne la chaîne "<-7 [-456,23]>".
 	   */
 	  @Override
-	  public String toString() {
-	    return "<" + getValeur() + " [" + getMin() + "," + getMax() + "]>";
-	  }
-	public long getValeur() {
-		return valeur;
+    public String toString() {
+		return "<" + getVal().getTlong() + " [" + getMin() + "," + getMax() + "]>";
+    }
+	@Override
+	public Placeholder getMax() {
+		return new Placeholder(0,0,this.max);
+	}
+
+	@Override
+	public Placeholder getMin() {
+		return new Placeholder(0,0,this.min);
 	}
 
 
-	public void setValeur(long valeur) {
-		this.valeur = valeur;
+	@Override
+	public Placeholder getVal() {
+		return new Placeholder(0,0,this.valeur);
 	}
 
 
-	public long getMax() {
-		return max;
-	}
-
-
-	public long getMin() {
-		return min;
+	@Override
+	public void setVal(Placeholder p) {
+		this.valeur = p.getTlong();
+		
 	}
 }

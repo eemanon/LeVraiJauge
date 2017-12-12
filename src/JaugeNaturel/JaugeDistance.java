@@ -83,32 +83,28 @@ public class JaugeDistance implements IJauge {
 	   * valeur=-7, la concaténation donne la chaîne "<-7 [-456,23]>".
 	   */
 	  public String toString() {
-	    return "<" + getValeur() + " [" + getMin() + "," + getMax() + "]>";
+	    return "<" + getVal().getTlong() + " [" + getMin() + "," + getMax() + "]>";
 	  }
-
-	public Placeholder getValeur() {
-		return new Placeholder(0,0.0f,valeur);
-	}
-
-	public Placeholder getMax() {
-		return new Placeholder(0,0,this.distanceVigi2);
-	}
-
-
-	public Placeholder getMin() {
-		return new Placeholder(0,0,this.distanceVigi1);
-	}
-
-
-	@Override
-	public Placeholder getVal() {
-		return new Placeholder(0,0,this.valeur);
-	}
-
-
-	@Override
-	public void setVal(Placeholder p) {
-		this.valeur = p.getTlong();
-		
-	}
+	
+		public Placeholder getMax() {
+			return new Placeholder(0,0,this.distanceVigi2);
+		}
+	
+	
+		public Placeholder getMin() {
+			return new Placeholder(0,0,this.distanceVigi1);
+		}
+	
+	
+		@Override
+		public Placeholder getVal() {
+			return new Placeholder(0,0,this.valeur);
+		}
+	
+	
+		@Override
+		public void setVal(Placeholder p) {
+			this.valeur = p.getTlong();
+			
+		}
 }
