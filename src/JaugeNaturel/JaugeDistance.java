@@ -1,6 +1,6 @@
 package JaugeNaturel;
 
-public class JaugeDistance extends Jauge implements IJauge {
+public class JaugeDistance implements IJauge {
 	  private long valeur;
 	  private final long distanceVigi1;
 	  private final long distanceVigi2;
@@ -90,32 +90,25 @@ public class JaugeDistance extends Jauge implements IJauge {
 		return new Placeholder(0,0.0f,valeur);
 	}
 
-
-	public void setValeur(Placeholder p) {
-		this.valeur = p.getTlong();
-	}
-
-
 	public Placeholder getMax() {
-		return new Placeholder(0,0,this.distanceVigi1);
+		return new Placeholder(0,0,this.distanceVigi2);
 	}
 
 
 	public Placeholder getMin() {
-		return new Placeholder(0,0,this.distanceVigi2);
+		return new Placeholder(0,0,this.distanceVigi1);
 	}
 
 
 	@Override
 	public Placeholder getVal() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Placeholder(0,0,this.valeur);
 	}
 
 
 	@Override
 	public void setVal(Placeholder p) {
-		// TODO Auto-generated method stub
+		this.valeur = p.getTlong();
 		
 	}
 }
