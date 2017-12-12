@@ -107,10 +107,4 @@ public class JaugeDistance implements IJauge {
 			this.valeur = p.getTlong();
 			
 		}
-
-
-		@Override
-		public int comparerValeur(Placeholder p) {
-			return Long.compare(p.getTlong(), this.valeur);
-		}
 }

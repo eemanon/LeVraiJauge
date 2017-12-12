@@ -140,10 +140,4 @@ public Placeholder getMax() {
 	return new Placeholder(0,0, this.max);
 }
 
-
-@Override
-public int comparerValeur(Placeholder p) {
-	return Long.compare(p.getTlong(), this.valeur);
-}
-
 }

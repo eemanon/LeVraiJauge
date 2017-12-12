@@ -10,5 +10,4 @@ public interface IJauge {
 	public Placeholder getMax();
 	public Placeholder getVal();
 	public void setVal(Placeholder p);
-	public int comparerValeur(Placeholder p);
 }
