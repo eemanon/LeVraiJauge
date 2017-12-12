@@ -7,10 +7,10 @@ import org.junit.Test;
 
 public class JaugeTest{
 
-	public static IJauge creerJauge(int min, int max) {
+	public static IJauge creerJauge(long min, long max) {
 		return new JaugeDistance(min, max);
 	}
-	public static IJauge creerJauge(int min, int max, int val) {
+	public static IJauge creerJauge(long min, long max, long val) {
 		if (min<0||max<0||val<0)
 			return new JaugeNegatif(min, max, val);
 		else
